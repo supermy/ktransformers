@@ -177,6 +177,8 @@ interface, RESTful APIs compliant with OpenAI and Ollama, and even a simplified 
 Our vision for KTransformers is to serve as a flexible platform for experimenting with innovative LLM inference optimizations. Please let us know if you need any other features.
 <h2 id="Updates"><a class="header" href="#Updates">🔥 Updates</a></h2>
 <ul>
+<li><strong>May 14, 2025</strong>: Support Intel Arc GPU (<a href="./en/xpu.html">Tutorial</a>).</li>
+<li><strong>Apr 9, 2025</strong>: Experimental support for LLaMA 4 models (<a href="./en/llama4.html">Tutorial</a>).</li>
 <li><strong>Apr 2, 2025</strong>: Support Multi-concurrency. (<a href="./en/balance-serve.html">Tutorial</a>).</li>
 <li><strong>Mar 27, 2025</strong>: Support Multi-concurrency.</li>
 <li><strong>Mar 15, 2025</strong>: Support ROCm on AMD GPU (<a href="./en/ROCm.html">Tutorial</a>).</li>
@@ -312,17 +314,19 @@ git submodule update --init --recursive
 <li>
 <p>For Multi-concurrency with 500G RAM:</p>
 <pre><code class="language-shell">USE_BALANCE_SERVE=1 bash ./install.sh
+pip install third_party/custom_flashinfer/
 </code></pre>
 </li>
 <li>
 <p>For Multi-concurrency with two cpu and 1T RAM:</p>
 <pre><code class="language-shell">USE_BALANCE_SERVE=1 USE_NUMA=1 bash ./install.sh
+pip install third_party/custom_flashinfer/
 </code></pre>
 </li>
 </ul>
 </li>
 <li>
-<p>For Windows (Windows native temprarily deprecated, please try WSL)</p>
+<p>For Windows (Windows native temporarily deprecated, please try WSL)</p>
 <pre><code class="language-shell">install.bat
 </code></pre>
 </li>
@@ -367,7 +371,7 @@ python -m ktransformers.local_chat --model_path deepseek-ai/DeepSeek-V2-Lite-Cha
 <p><code>--gguf_path</code> (required): Path of a directory containing GGUF files which could that can be downloaded from <a href="https://huggingface.co/mzwing/DeepSeek-V2-Lite-Chat-GGUF/tree/main">Hugging Face</a>. Note that the directory should only contains GGUF of current model, which means you need one separate directory for each model.</p>
 </li>
 <li>
-<p><code>--optimize_config_path</code> (required except for Qwen2Moe and DeepSeek-V2): Path of YAML file containing optimize rules. There are two rule files pre-written in the <a href="en/ktransformers/optimize/optimize_rules">ktransformers/optimize/optimize_rules</a> directory for optimizing DeepSeek-V2 and Qwen2-57B-A14, two SOTA MoE models.</p>
+<p><code>--optimize_config_path</code> (required except for Qwen2Moe and DeepSeek-V2): Path of YAML file containing optimize rules. There are two rule files pre-written in the <a href="https://github.com/kvcache-ai/ktransformers/tree/main/ktransformers/optimize/optimize_rules">ktransformers/optimize/optimize_rules</a> directory for optimizing DeepSeek-V2 and Qwen2-57B-A14, two SOTA MoE models.</p>
 </li>
 <li>
 <p><code>--max_new_tokens</code>: Int (default=1000). Maximum number of new tokens to generate.</p>

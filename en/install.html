@@ -283,17 +283,19 @@ git submodule update --init --recursive
 <li>
 <p>For Multi-concurrency with 500G RAM:</p>
 <pre><code class="language-shell">USE_BALANCE_SERVE=1 bash ./install.sh
+pip install third_party/custom_flashinfer/
 </code></pre>
 </li>
 <li>
 <p>For Multi-concurrency with two cpu and 1T RAM:</p>
 <pre><code class="language-shell">USE_BALANCE_SERVE=1 USE_NUMA=1 bash ./install.sh
+pip install third_party/custom_flashinfer/
 </code></pre>
 </li>
 </ul>
 </li>
 <li>
-<p>For Windows (Windows native temprarily deprecated, please try WSL)</p>
+<p>For Windows (Windows native temporarily deprecated, please try WSL)</p>
 <pre><code class="language-shell">install.bat
 </code></pre>
 </li>
@@ -338,7 +340,7 @@ python -m ktransformers.local_chat --model_path deepseek-ai/DeepSeek-V2-Lite-Cha
 <p><code>--gguf_path</code> (required): Path of a directory containing GGUF files which could that can be downloaded from <a href="https://huggingface.co/mzwing/DeepSeek-V2-Lite-Chat-GGUF/tree/main">Hugging Face</a>. Note that the directory should only contains GGUF of current model, which means you need one separate directory for each model.</p>
 </li>
 <li>
-<p><code>--optimize_config_path</code> (required except for Qwen2Moe and DeepSeek-V2): Path of YAML file containing optimize rules. There are two rule files pre-written in the <a href="ktransformers/optimize/optimize_rules">ktransformers/optimize/optimize_rules</a> directory for optimizing DeepSeek-V2 and Qwen2-57B-A14, two SOTA MoE models.</p>
+<p><code>--optimize_config_path</code> (required except for Qwen2Moe and DeepSeek-V2): Path of YAML file containing optimize rules. There are two rule files pre-written in the <a href="https://github.com/kvcache-ai/ktransformers/tree/main/ktransformers/optimize/optimize_rules">ktransformers/optimize/optimize_rules</a> directory for optimizing DeepSeek-V2 and Qwen2-57B-A14, two SOTA MoE models.</p>
 </li>
 <li>
 <p><code>--max_new_tokens</code>: Int (default=1000). Maximum number of new tokens to generate.</p>
